@@ -1,0 +1,22 @@
+services:
+  pekko-scala-clustering-v2-app-1:
+    image: asinduvg/essemblyx-scala
+    container_name: pekko-scala-clustering-v2-app-1
+    volumes:
+      - ./src:/root/pekko-scala-clustering-v2/src
+      - ./build.sbt:/root/pekko-scala-clustering-v2/build.sbt
+    command: ["tail", "-f", "/dev/null"]
+    networks:
+      - pekko-network
+  pekko-scala-clustering-v2-app-2:
+    image: asinduvg/essemblyx-scala
+    container_name: pekko-scala-clustering-v2-app-2
+    volumes:
+      - ./src:/root/pekko-scala-clustering-v2/src
+      - ./build.sbt:/root/pekko-scala-clustering-v2/build.sbt
+    command: ["tail", "-f", "/dev/null"]
+    networks:
+      - pekko-network
+networks:
+  pekko-network:
+    driver: bridge
